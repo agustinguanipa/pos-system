@@ -26,7 +26,7 @@ class ProviderUpdateRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|unique:providers,email,'.$this->route('provider')->id.'|max:255', 
-            'rif_number' => 'required|string|max:11|min:11|unique:providers,rif_number,'.$this->route('provider')->id.'max:255',
+            'rif_number' => 'required|string|max:11|min:9|unique:providers,rif_number,'.$this->route('provider')->id.'max:255',
             'address' => 'nullable|string|max:255',
             'phone' => 'required|string|min:10|unique:providers,phone,'.$this->route('provider')->id.'|max:15',
         ];

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
-use App\Http\Request\CategoryStoreRequest;
-use App\Http\Request\CategoryUpdateRequest;
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 
 class CategoryController extends Controller
 {
@@ -20,7 +20,7 @@ class CategoryController extends Controller
         return view('admin.category.create');
     }
 
-    public function store(StoreRequest $request)
+    public function store(CategoryStoreRequest $request)
     {
         Category::create($request->all());
         return redirect()->route('categories.index');
@@ -33,10 +33,10 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('admin.category.index', compact('categories'));
+        return view('admin.category.edit', compact('category'));
     }
 
-    public function update(UpdateRequest $request, Category $category)
+    public function update(CategoryUpdateRequest $request, Category $category)
     {
         $category->update($request->all());
         return redirect()->route('categories.index');

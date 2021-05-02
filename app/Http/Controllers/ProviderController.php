@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Provider;
 use Illuminate\Http\Request;
-use App\Http\Request\ProviderStoreRequest;
-use App\Http\Request\ProviderUpdateRequest;
+use App\Http\Requests\ProviderStoreRequest;
+use App\Http\Requests\ProviderUpdateRequest;
 
 
 class ProviderController extends Controller
@@ -21,7 +21,7 @@ class ProviderController extends Controller
         return view('admin.provider.create');
     }
 
-    public function store(StoreRequest $request)
+    public function store(ProviderStoreRequest $request)
     {
         Provider::create($request->all());
         return redirect()->route('providers.index');
@@ -34,10 +34,10 @@ class ProviderController extends Controller
 
     public function edit(Provider $provider)
     {
-        return view('admin.provider.index', compact('providers'));
+        return view('admin.provider.edit', compact('provider'));
     }
 
-    public function update(UpdateRequest $request, Provider $provider)
+    public function update(ProviderUpdateRequest $request, Provider $provider)
     {
         $provider->update($request->all());
         return redirect()->route('providers.index');

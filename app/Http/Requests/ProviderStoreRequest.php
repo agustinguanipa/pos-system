@@ -26,7 +26,7 @@ class ProviderStoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:200|unique:providers', 
-            'rif_number' => 'required|string|max:11|min:11|unique:providers', 
+            'rif_number' => 'required|string|max:11|min:9|unique:providers', 
             'address' => 'nullable|string|max:255', 
             'phone' => 'required|string|max:15|min:10|unique:providers',
         ];

@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('categories', 'CategoryController')->names('categories');
+Route::resource('clients', 'ClientController')->names('clients');
+Route::resource('products', 'ProductController')->names('products');
+Route::resource('providers', 'ProviderController')->names('providers');
+Route::resource('purchases', 'PurshaseController')->names('purchases');
+Route::resource('sales', 'SaleController')->names('sales');
+
+Route::get('/prueba', function () {
+    return view('prueba');
+});
