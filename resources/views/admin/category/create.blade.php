@@ -33,7 +33,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Registar Categoría</h4>
+                        <h4 class="card-title">Registrar Categoría</h4>
                     </div>
                     {!! Form::open(['route'=>'categories.store', 'method'=>'POST']) !!}
                         @include('admin.category._form')

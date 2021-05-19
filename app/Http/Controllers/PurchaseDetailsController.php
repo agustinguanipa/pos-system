@@ -41,10 +41,10 @@ class PurchaseDetailsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\PurchaseDetails  $purchaseDetails
+     * @param  \App\PurchaseDetails  $PurchaseDetails
      * @return \Illuminate\Http\Response
      */
-    public function show(PurchaseDetails $purchaseDetails)
+    public function show(PurchaseDetails $PurchaseDetails)
     {
         //
     }
@@ -52,10 +52,10 @@ class PurchaseDetailsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\PurchaseDetails  $purchaseDetails
+     * @param  \App\PurchaseDetails  $PurchaseDetails
      * @return \Illuminate\Http\Response
      */
-    public function edit(PurchaseDetails $purchaseDetails)
+    public function edit(PurchaseDetails $PurchaseDetails)
     {
         //
     }
@@ -64,10 +64,10 @@ class PurchaseDetailsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PurchaseDetails  $purchaseDetails
+     * @param  \App\PurchaseDetails  $PurchaseDetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PurchaseDetails $purchaseDetails)
+    public function update(Request $request, PurchaseDetails $PurchaseDetails)
     {
         //
     }
@@ -75,10 +75,10 @@ class PurchaseDetailsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\PurchaseDetails  $purchaseDetails
+     * @param  \App\PurchaseDetails  $PurchaseDetails
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PurchaseDetails $purchaseDetails)
+    public function destroy(PurchaseDetails $PurchaseDetails)
     {
         //
     }

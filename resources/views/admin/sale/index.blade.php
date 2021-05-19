@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Compras')
+@section('title','Ventas')
 @section('styles')
 <style type="text/css">
     .unstyled-button {
@@ -18,12 +18,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Compras
+            Ventas
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Panel de Administración</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Compras</li>
+                <li class="breadcrumb-item active" aria-current="page">Ventas</li>
             </ol>
         </nav>
     </div>
@@ -32,14 +32,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Compras</h4>
+                        <h4 class="card-title">Ventas</h4>
                         {{--  <i class="fas fa-ellipsis-v"></i>  --}}
                         <div class="btn-group">
                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a href="{{route('purchases.create')}}" class="dropdown-item">Registrar</a>
+                                <a href="{{route('sales.create')}}" class="dropdown-item">Registrar</a>
                                 {{--  <button class="dropdown-item" type="button">Another action</button>
                                 <button class="dropdown-item" type="button">Something else here</button>
                                 --}}
@@ -58,23 +58,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($purchases as $purchase)
+                                @foreach ($sales as $sale)
                                 <tr>
                                     <td>
-                                        <a href="{{route('purchases.show',$purchase)}}">{{$purchase->id}}</a>
+                                        <a href="{{route('sales.show',$sale)}}">{{$sale->id}}</a>
                                     </td>
-                                    <td>{{$purchase->purchase_date}}</td>
-                                    <td>{{$purchase->total}}</td>
-                                    <td>{{$purchase->status}}</td>
+                                    <td>{{$sale->sale_date}}</td>
+                                    <td>{{$sale->total}}</td>
+                                    <td>{{$sale->status}}</td>
                                     <td style="width: 50px;">
-                                        {{-- <a class="jsgrid-button jsgrid-edit-button" href="{{route('purchases.edit', $purchase)}}" title="Editar">
+                                        {{-- <a class="jsgrid-button jsgrid-edit-button" href="{{route('sales.edit', $sale)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a> --}}
                                         {{-- <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
                                         </button> --}}
-                                        <a href="{{route('purchases.show',$purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
-                                        <a href="{{route('purchases.pdf',$purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
+                                        <a href="{{route('sales.show',$sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
+                                        <a href="{{route('sales.pdf',$sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
                                         <a href="#" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
                                     </td>
                                 </tr>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 {{--  <div class="card-footer text-muted">
-                    {{$purchases->render()}}
+                    {{$sales->render()}}
                 </div>  --}}
             </div>
         </div>

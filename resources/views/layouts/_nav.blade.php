@@ -46,6 +46,18 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{route('purchases.index')}}">
+                <i class="fa fa-money-check-alt menu-icon"></i>
+                <span class="menu-title">Compras</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('sales.index')}}">
+                <i class="fa fa-store-alt menu-icon"></i>
+                <span class="menu-title">Ventas</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="pages/widgets.html">
                 <i class="fa fa-puzzle-piece menu-icon"></i>
                 <span class="menu-title">Widgets</span>
