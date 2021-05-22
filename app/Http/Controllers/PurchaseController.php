@@ -18,6 +18,12 @@ class PurchaseController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:purchases.index')->only(['index']);
+        $this->middleware('can:purchases.create')->only(['create','store']);
+        $this->middleware('can:purchases.show')->only(['show']);
+        $this->middleware('can:purchases.pdf')->only('pdf');
+        $this->middleware('can:upload.purchases')->only('upload');
+        $this->middleware('can:change.status.purchases')->only('change_status');
     }
 
     public function index()
@@ -83,5 +89,22 @@ class PurchaseController extends Controller
 
         $pdf = PDF::loadView('admin.purchase.pdf', compact('purchase', 'subtotal', 'PurchaseDetails'));
         return $pdf->download('Reporte_de_Compra_'.$purchase->id.'.pdf');
+    }
+
+    public function upload(Request $request, Purchase $purchase)
+    {
+        // $purchase->update($request->all());
+        // return redirect()->route('purchases.index');
+    }
+
+    public function change_status(Purchase $purchase)
+    {
+        if ($purchase->status == 'VALID') {
+            $purchase->update(['status'=>'CANCELED']);
+            return redirect()->back();
+        } else {
+            $purchase->update(['status'=>'VALID']);
+            return redirect()->back();
+        }
     }
 }

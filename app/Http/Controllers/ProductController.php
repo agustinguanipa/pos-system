@@ -11,6 +11,17 @@ use App\Http\Requests\ProductUpdateRequest;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:products.index')->only(['index']);
+        $this->middleware('can:products.create')->only(['create','store']);
+        $this->middleware('can:products.edit')->only(['edit','update']);
+        $this->middleware('can:products.show')->only(['show']);
+        $this->middleware('can:products.destroy')->only(['destroy']);
+        $this->middleware('can:change.status.products')->only('change_status');
+    }
+
     public function index()
     {
         $products = Product::get();
@@ -69,5 +80,16 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('products.index');
+    }
+
+    public function change_status(Product $product)
+    {
+        if ($product->status == 'ACTIVE') {
+            $product->update(['status'=>'DEACTIVATED']);
+            return redirect()->back();
+        } else {
+            $product->update(['status'=>'ACTIVE']);
+            return redirect()->back();
+        }
     }
 }

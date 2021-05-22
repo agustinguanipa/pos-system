@@ -9,6 +9,16 @@ use App\Http\Requests\ClientUpdateRequest;
 
 class ClientController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:clients.index')->only(['index']);
+        $this->middleware('can:clients.create')->only(['create','store']);
+        $this->middleware('can:clients.edit')->only(['edit','update']);
+        $this->middleware('can:clients.show')->only(['show']);
+        $this->middleware('can:clients.destroy')->only(['destroy']);
+    }
+
     public function index()
     {
         $clients = Client::get();

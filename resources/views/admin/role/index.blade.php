@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Ventas')
+@section('title','Roles del Sistema')
 @section('styles')
 <style type="text/css">
     .unstyled-button {
@@ -18,12 +18,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Ventas
+            Roles del Sistema
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Panel de Administración</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Ventas</li>
+                <li class="breadcrumb-item active" aria-current="page">Roles del Sistema</li>
             </ol>
         </nav>
     </div>
@@ -32,14 +32,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Ventas</h4>
+                        <h4 class="card-title">Roles del Sistema</h4>
                         {{--  <i class="fas fa-ellipsis-v"></i>  --}}
                         <div class="btn-group">
                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a href="{{route('sales.create')}}" class="dropdown-item">Registrar</a>
+                                <a href="{{route('roles.create')}}" class="dropdown-item">Agregar</a>
                                 {{--  <button class="dropdown-item" type="button">Another action</button>
                                 <button class="dropdown-item" type="button">Something else here</button>
                                 --}}
@@ -51,31 +51,31 @@
                             <thead>
                                 <tr class="bg-primary text-white">
                                     <th>#</th>
-                                    <th>Fecha</th>
-                                    <th>Total</th>
-                                    <th>Status</th>
-                                    <th style="width: 15px;">Acciones</th>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($sales as $sale)
+                                @foreach ($roles as $role)
                                 <tr>
+                                    <th scope="row">{{$role->id}}</th>
                                     <td>
-                                        <a href="{{route('sales.show',$sale)}}">{{$sale->id}}</a>
+                                        <a href="{{route('roles.show',$role)}}">{{$role->name}}</a>
                                     </td>
-                                    <td>{{$sale->sale_date}}</td>
-                                    <td>{{$sale->total}}</td>
-                                    <td>{{$sale->status}}</td>
+                                    <td>{{$role->email}}</td>
                                     <td style="width: 50px;">
-                                        {{-- <a class="jsgrid-button jsgrid-edit-button" href="{{route('sales.edit', $sale)}}" title="Editar">
+                                        {!! Form::open(['route'=>['roles.destroy',$role], 'method'=>'DELETE']) !!}
+
+                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('roles.edit', $role)}}" title="Editar">
                                             <i class="far fa-edit"></i>
-                                        </a> --}}
-                                        {{-- <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+                                        </a>
+                                        
+                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
-                                        </button> --}}
-                                        <a href="{{route('sales.show',$sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
-                                        <a href="{{route('sales.pdf',$sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
-                                        <a href="{{route('sales.print',$sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
+                                        </button>
+
+                                        {!! Form::close() !!}
                                     </td>
                                 </tr>
                                 @endforeach
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 {{--  <div class="card-footer text-muted">
-                    {{$sales->render()}}
+                    {{$roles->render()}}
                 </div>  --}}
             </div>
         </div>
