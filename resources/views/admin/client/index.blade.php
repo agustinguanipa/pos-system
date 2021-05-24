@@ -1,14 +1,6 @@
 @extends('layouts.admin')
 @section('title','Clientes')
 @section('styles')
-<style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
-</style>
-
 @endsection
 @section('options')
 @endsection
@@ -71,11 +63,11 @@
                                     <td style="width: 50px;">
                                         {!! Form::open(['route'=>['clients.destroy',$client], 'method'=>'DELETE']) !!}
 
-                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('clients.edit', $client)}}" title="Editar">
+                                        <a class="jsgrid-button jsgrid-edit-button edit" href="{{route('clients.edit', $client)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
                                         
-                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button delete" type="submit" title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
 

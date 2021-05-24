@@ -1,0 +1,33 @@
+/* Common CSS */
+
+/* Tablas */
+
+.unstyled-button {
+    border: none;
+    padding: 0;
+    background: none;
+  }
+
+table.table td a.show {
+    color: #00B916;
+}
+
+table.table td a.edit {
+    color: #FFC107;
+}
+
+table.table td a.delete  {
+    color: #F44336;
+}
+
+table.table td button.delete {
+    color: #F44336;
+}
+
+table.table td a.pdf {
+    color: #F44336;
+}
+
+table.table td a.print {
+    color: #2250e7;
+}

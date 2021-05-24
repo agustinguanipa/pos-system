@@ -21,9 +21,17 @@ class BusinessController extends Controller
         return view('admin.business.index', compact('business'));
     }
 
-    public function update(BusinessUpdateRequest $request, Business $category)
+    public function update(BusinessUpdateRequest $request, Business $business)
     {
-        $business->update($request->all());
-        return redirect()->route('businesses.index');
+        if ($request->hasFile('picture')){
+            $file = $request->file('picture');
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path("/image"), $image_name);
+        }
+
+        $business->update($request->all()+[
+            'logo'=>$image_name,
+        ]);
+        return redirect()->route('business.index');
     }
 }

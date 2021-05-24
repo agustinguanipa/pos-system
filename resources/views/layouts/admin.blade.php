@@ -13,6 +13,7 @@
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
+  {!! Html::style('css/common.css') !!}
   {!! Html::style('template/css/style.css') !!}
   @yield ('styles')
   <!-- endinject -->

@@ -58,22 +58,60 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/widgets.html">
-                <i class="fa fa-puzzle-piece menu-icon"></i>
-                <span class="menu-title">Widgets</span>
+            <a class="nav-link" data-toggle="collapse" href="#page-configuracion" aria-expanded="false" aria-controls="page-layouts">
+                <i class="fas fa-cogs menu-icon"></i>
+                <span class="menu-title">Configuración</span>
+                <i class="menu-arrow"></i>
+            </a>
+        <div class="collapse" id="page-configuracion">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('business.index')}}">
+                        <i class="fas fa-building menu-icon"></i>
+                        <span class="menu-title">Empresa</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('printers.index')}}">
+                        <i class="fa fa-print menu-icon"></i>
+                        <span class="menu-title">Impresora</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('users.index')}}">
+                <i class="fa fa-users-cog menu-icon"></i>
+                <span class="menu-title">Usuarios</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
+            <a class="nav-link" href="{{route('roles.index')}}">
+                <i class="fas fa-user-tag menu-icon"></i>
+                <span class="menu-title">Roles</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#page-reportes" aria-expanded="false" aria-controls="page-layouts">
                 <i class="fab fa-trello menu-icon"></i>
-                <span class="menu-title">Page Layouts</span>
+                <span class="menu-title">Reportes</span>
                 <i class="menu-arrow"></i>
             </a>
-        <div class="collapse" id="page-layouts">
+        <div class="collapse" id="page-reportes">
             <ul class="nav flex-column sub-menu">
-            <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="pages/layout/boxed-layout.html">Boxed</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/layout/rtl-layout.html">RTL</a></li>
-            <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="pages/layout/horizontal-menu.html">Horizontal Menu</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('reports.day')}}">
+                        <i class="fas fa-clipboard-list menu-icon"></i>
+                        <span class="menu-title">Reportes por Dia</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('reports.date')}}">
+                        <i class="fas fa-clipboard-list menu-icon"></i>
+                        <span class="menu-title">Reportes por Fecha</span>
+                    </a>
+                </li>
             </ul>
         </div>
         </li>

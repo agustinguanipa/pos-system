@@ -154,17 +154,16 @@
 		<tr>
 			<td class="logo_factura">
 				<div>
-					<img src="#" width="180px">
+					<img src="{{asset('image/'.$business->logo)}}" width="180px">
 				</div>
 			</td>
 			<td class="info_empresa" colspan="2">		
                 <div class="card">
-                    <span class="h2">NOMBRE EMPRESA</span>
-                    <p>SLOGAN</p>
-                    <p>REGISTRO</p>
-                    <p>TELEFONO</p>
-                    <p>EMAIL</p>
-                    <p>DIRECCION</p>
+                    <span class="h2">{{$business->name}}</span>
+                    <p>{{$business->description}}</p>
+                    <p>{{$business->rif_number}}</p>
+                    <p>{{$business->email}}</p>
+                    <p>{{$business->address}}</p>
                 </div>
 			</td>
 			<td class="info_factura">

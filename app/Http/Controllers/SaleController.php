@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Sale;
 use App\Client;
 use App\Product;
+use App\Business;
 use Illuminate\Http\Request;
 use App\Http\Requests\SaleStoreRequest;
 use App\Http\Requests\SaleUpdateRequest;
@@ -39,7 +40,7 @@ class SaleController extends Controller
     public function create()
     {
         $clients = Client::get();
-        $products = Product::get();
+        $products = Product::where('status', 'ACTIVE')->get();
         return view('admin.sale.create', compact('clients', 'products'));
     }
 
@@ -92,13 +93,14 @@ class SaleController extends Controller
 
     public function pdf(Sale $sale)
     {
+        $business = Business::first();
         $subtotal = 0;
         $SaleDetails = $sale->SaleDetails;
         foreach ($SaleDetails as $SaleDetail) {
             $subtotal += $SaleDetail->quantity * $SaleDetail->price;
         }
 
-        $pdf = PDF::loadView('admin.sale.pdf', compact('sale', 'subtotal', 'SaleDetails'));
+        $pdf = PDF::loadView('admin.sale.pdf', compact('sale', 'subtotal', 'SaleDetails', 'business'));
         return $pdf->download('Reporte_de_Venta_'.$sale->id.'.pdf');
     }
 

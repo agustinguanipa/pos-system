@@ -1,6 +1,14 @@
 @extends('layouts.admin')
-@section('title','Ventas')
+@section('title','Reporte de Ventas')
 @section('styles')
+<style type="text/css">
+    .unstyled-button {
+        border: none;
+        padding: 0;
+        background: none;
+      }
+</style>
+
 @endsection
 @section('options')
 @endsection
@@ -10,12 +18,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Ventas
+            Reporte de Ventas
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Panel de Administración</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Ventas</li>
+                <li class="breadcrumb-item active" aria-current="page">Reporte de Ventas</li>
             </ol>
         </nav>
     </div>
@@ -24,17 +32,37 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Ventas</h4>
+                        <h4 class="card-title">Reporte de Ventas</h4>
                         {{--  <i class="fas fa-ellipsis-v"></i>  --}}
                         <div class="btn-group">
                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right">
+                            {{--<div class="dropdown-menu dropdown-menu-right">
                                 <a href="{{route('sales.create')}}" class="dropdown-item">Registrar</a>
-                                {{--  <button class="dropdown-item" type="button">Another action</button>
+                                { <button class="dropdown-item" type="button">Another action</button>
                                 <button class="dropdown-item" type="button">Something else here</button>
-                                --}}
+                                
+                            </div> --}} 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-4 text-center">
+                            <span>Fecha de Consulta: <b> </b></span>
+                            <div class="form-group">
+                                <strong>{{\Carbon\Carbon::now()->format('d/m/Y')}}</strong>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 text-center">
+                            <span>Cantidad de Registros: <b></b></span>
+                            <div class="form-group">
+                                <strong>{{$sales->count()}}</strong>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 text-center">
+                            <span>Total de Ingresos: <b> </b></span>
+                            <div class="form-group">
+                                <strong>$ {{$total}}</strong>
                             </div>
                         </div>
                     </div>
@@ -55,21 +83,11 @@
                                     <td>
                                         <a href="{{route('sales.show',$sale)}}">{{$sale->id}}</a>
                                     </td>
-                                    <td>{{$sale->sale_date}}</td>
+                                    <td>
+                                        {{\Carbon\Carbon::parse($sale->sale_date)->format('d M y h:i a')}}
+                                    </td>
                                     <td>{{$sale->total}}</td>
-                                    @if ($sale->status == 'VALID')
-                                    <td>
-                                        <a class="btn btn-success btn-sm change-status" href="{{route('change.status.sales', $sale)}}" title="Status">
-                                            <i class="fas fa-check"></i> VÁLIDA
-                                        </a>
-                                    </td>
-                                    @else
-                                    <td>
-                                        <a class="btn btn-danger btn-sm change-status" href="{{route('change.status.sales', $sale)}}" title="Status">
-                                            <i class="fas fa-times"></i> CANCELADA
-                                        </a>
-                                    </td>
-                                    @endif
+                                    <td>{{$sale->status}}</td>
                                     <td style="width: 50px;">
                                         {{-- <a class="jsgrid-button jsgrid-edit-button" href="{{route('sales.edit', $sale)}}" title="Editar">
                                             <i class="far fa-edit"></i>
@@ -77,9 +95,9 @@
                                         {{-- <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
                                         </button> --}}
-                                        <a href="{{route('sales.show',$sale)}}" class="jsgrid-button jsgrid-edit-button show"><i class="far fa-eye"></i></a>
-                                        <a href="{{route('sales.pdf',$sale)}}" class="jsgrid-button jsgrid-edit-button pdf"><i class="far fa-file-pdf"></i></a>
-                                        <a href="{{route('sales.print',$sale)}}" class="jsgrid-button jsgrid-edit-button print"><i class="fas fa-print"></i></a>
+                                        <a href="{{route('sales.show',$sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
+                                        <a href="{{route('sales.pdf',$sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
+                                        <a href="{{route('sales.print',$sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

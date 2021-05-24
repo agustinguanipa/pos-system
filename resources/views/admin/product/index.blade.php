@@ -1,14 +1,6 @@
 @extends('layouts.admin')
 @section('title','Productos')
 @section('styles')
-<style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
-</style>
-
 @endsection
 @section('options')
 @endsection
@@ -72,16 +64,28 @@
                                     </td>
                                     <td>{{$product->stock}}</td>
                                     <td>{{$product->sell_price}}</td>
-                                    <td>{{$product->status}}</td>
+                                    @if ($product->status == 'ACTIVE')
+                                    <td>
+                                        <a class="btn btn-success btn-sm change-status" href="{{route('change.status.products', $product)}}" title="Status">
+                                            <i class="fas fa-check"></i> ACTIVO
+                                        </a>
+                                    </td>
+                                    @else
+                                    <td>
+                                        <a class="btn btn-danger btn-sm change-status" href="{{route('change.status.products', $product)}}" title="Status">
+                                            <i class="fas fa-times"></i> DESACTIVADO
+                                        </a>
+                                    </td>
+                                    @endif
                                     <td>{{$product->category->name}}</td>
                                     <td style="width: 50px;">
                                         {!! Form::open(['route'=>['products.destroy',$product], 'method'=>'DELETE']) !!}
 
-                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('products.edit', $product)}}" title="Editar">
-                                            <i class="far fa-edit"></i>
+                                        <a class="jsgrid-button jsgrid-edit-button edit" href="{{route('products.edit', $product)}}" title="Editar">
+                                            <i class="far fa-edit fa-1x"></i>
                                         </a>
                                         
-                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button delete" type="submit" title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
 

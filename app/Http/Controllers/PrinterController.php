@@ -17,11 +17,11 @@ class PrinterController extends Controller
     
     public function index()
     {
-        $printer = Business::where('id', 1)->firstOrFail();
+        $printer = Printer::where('id', 1)->firstOrFail();
         return view('admin.printer.index', compact('printer'));
     }
 
-    public function update(BusinessUpdateRequest $request, Business $category)
+    public function update(PrinterUpdateRequest $request, Printer $printer)
     {
         $printer->update($request->all());
         return redirect()->route('printers.index');
