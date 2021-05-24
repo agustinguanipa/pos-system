@@ -2,6 +2,12 @@
 
 /* Tablas */
 
+.goto-dashboard:hover {
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
 .unstyled-button {
     border: none;
     padding: 0;

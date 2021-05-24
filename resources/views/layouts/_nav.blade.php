@@ -7,16 +7,16 @@
             </div>
             <div class="profile-name">
             <p class="name">
-                Welcome Jane
+                Bienvenido(a) {{ Auth::user()->name }}
             </p>
             <p class="designation">
-                Super Admin
+                {{ Auth::user()->email }}
             </p>
             </div>
         </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index-2.html">
+            <a class="nav-link" href="{{route('home')}}">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
