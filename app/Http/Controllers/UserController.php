@@ -52,14 +52,24 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $user->update($request->all());
-        $user->roles()->sync($request->get('roles'));
-        return redirect()->route('users.index');
+        if ($user->id == 1) {
+            return redirect()->route('users.index');
+        } else {
+            $user->update($request->all());
+            $user->roles()->sync($request->get('roles'));
+            return redirect()->route('users.index');
+        }
+        
     }
 
     public function destroy(User $user)
     {
-        $user->delete();
-        return back();
+        if ($user->id == 1) {
+            return back();
+        } else {
+            $user->delete();
+            return back();
+        }
+        
     }
 }
