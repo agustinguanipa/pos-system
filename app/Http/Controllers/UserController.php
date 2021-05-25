@@ -59,7 +59,6 @@ class UserController extends Controller
             $user->roles()->sync($request->get('roles'));
             return redirect()->route('users.index');
         }
-        
     }
 
     public function destroy(User $user)
@@ -70,6 +69,5 @@ class UserController extends Controller
             $user->delete();
             return back();
         }
-        
     }
 }
