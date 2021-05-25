@@ -8,6 +8,8 @@ use App\Provider;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use \Milon\Barcode\DNS1D;
+use Picqer;
 
 class ProductController extends Controller
 {
@@ -46,7 +48,13 @@ class ProductController extends Controller
         $product = Product::create($request->all()+[
             'image'=>$image_name,
         ]);
-        $product->update(['code'=>$product->id]);
+
+        if ($request->code == "") {
+            $numero = $product->id;
+            $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
+            $product->update(['code'=>$numeroConCeros]);
+        }
+
         return redirect()->route('products.index');
     }
 
@@ -90,6 +98,22 @@ class ProductController extends Controller
         } else {
             $product->update(['status'=>'ACTIVE']);
             return redirect()->back();
+        }
+    }
+
+    public function get_products_by_barcode(Request $request)
+    {
+        if ($request->ajax()) {
+            $products = Product::where('code', $request->code)->firstOrFail();
+            return response()->json($products);
+        }
+    }
+
+    public function get_products_by_id(Request $request)
+    {
+        if ($request->ajax()) {
+            $products = Product::findOrFail($request->product_id);
+            return response()->json($products);
         }
     }
 }

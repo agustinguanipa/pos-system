@@ -26,7 +26,7 @@ class ProductStoreRequest extends FormRequest
         return [
             'name' => 'required|string|unique:products|max:255',
             'sell_price' => 'required|',
-            
+            'code'=>'string|nullable|max:8|min:8',
         ];
     }
 
@@ -39,6 +39,10 @@ class ProductStoreRequest extends FormRequest
             'name.max' => 'Solo se permiten 255 caracteres',
 
             'sell_price.required' => 'Este campo es requerido',
+
+            'code.string' => 'El valor no es correcto',
+            'code.max' => 'Solo se permiten 8 dígitos',
+            'code.min' => 'Se requieren 8 dígitos',
         ];
     }
 }

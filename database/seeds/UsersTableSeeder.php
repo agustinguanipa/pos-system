@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name'=>'Agustin Guanipa',
             'email'=>'agustin_guanipa@hotmail.com',
+            'profile_picture'=>'1619530810_Agustin 1 x 1.jpg',
             'password'=>'$2y$10$EZv099PrpxXUFfa/vadcFOlSec98pRQClV7txH19G6p9GrSkdzE8u',
         ]);
         

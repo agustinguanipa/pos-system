@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+    return redirect()->route('login');
 });
 
 Route::get('sales/reports_day', 'ReportController@reports_day')->name('reports.day');
@@ -38,12 +38,15 @@ Route::resource('printers', 'PrinterController')->names('printers')->only(['inde
 
 Route::get('purchases/upload/{purchase}', 'PurchaseController@upload')->name('upload.purchases');
 
-Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');;
-Route::get('change_status/purchases/{purchase}', 'PurchaseController@change_status')->name('change.status.purchases');;
-Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('change.status.sales');;
+Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');
+Route::get('change_status/purchases/{purchase}', 'PurchaseController@change_status')->name('change.status.purchases');
+Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('change.status.sales');
 
 Route::resource('users', 'UserController')->names('users');
 Route::resource('roles', 'RoleController')->names('roles');
+
+Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');
+Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('get_products_by_id');
 
 Route::get('/prueba', function () {
     return view('prueba');

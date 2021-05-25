@@ -1,6 +1,9 @@
 /* Common CSS */
 
-/* Tablas */
+.form-control{
+    height: 40px;
+    line-height: 30px;
+}
 
 .goto-dashboard:hover {
     font-weight: bolder;

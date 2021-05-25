@@ -73,13 +73,16 @@
                                             </a>
                                         </span>
                                     </p>
-                                  </div>
-                                  @if ($product->status == 'ACTIVE')
-                                    <button class="btn btn-success btn-block">Activo</button>
-                                  @else
-                                    <button class="btn btn-danger btn-block">Desactivado</button>
-                                  @endif
-                                  
+                                </div>
+                                @if ($product->status == 'ACTIVE')
+                                    <a class="btn btn-success btn-block change-status" href="{{route('change.status.products', $product)}}" title="Status">
+                                        <i class="fas fa-check"></i> ACTIVO
+                                    </a>
+                                @else
+                                    <a class="btn btn-danger btn-block change-status" href="{{route('change.status.products', $product)}}" title="Status">
+                                        <i class="fas fa-times"></i> DESACTIVADO
+                                    </a>
+                                @endif 
                             </div>
                         </div>
                         <div class="col-lg-8 pl-lg-5">
@@ -94,6 +97,11 @@
                                         <strong><i class="fas fa-barcode mr-1"></i> Código</strong>
                                         <p class="info-text">
                                             {{$product->code}}
+                                        </p>
+                                        <hr>
+                                        <strong><i class="fas fa-barcode mr-1"></i> Código de Barras</strong>
+                                        <p class="info-text">
+                                            {!! DNS1D::getBarcodeHTML($product->code, 'EAN13'); !!}
                                         </p>
                                         <hr>
                                         <strong><i class="fab fa-product-hunt mr-1"></i> Nombre</strong>

@@ -41,6 +41,11 @@
                             <input type="text" name="name" id="name" class="form-control" placeholder="" required>
                         </div>
                         <div class="form-group">
+                            <label for="code">Código de Barras</label>
+                            <input type="text" name="code" id="code" class="form-control" placeholder="">
+                            <small id="helpId" class="form text text-muted">Opcional</small>
+                        </div>
+                        <div class="form-group">
                             <label for="sell_price">Precio de Venta</label>
                             <input type="number" name="sell_price" id="sell_price" class="form-control" placeholder="" required>
                         </div>

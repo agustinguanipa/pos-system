@@ -28,6 +28,7 @@ class ProductUpdateRequest extends FormRequest
             'sell_price' => 'required',
             'category_id' => 'required|integer|exists:App\Category,id',
             'provider_id' => 'required|integer|exists:App\Provider,id',
+            'code'=>'string|nullable|max:8|min:8',
         ];
     }
 
@@ -48,6 +49,10 @@ class ProductUpdateRequest extends FormRequest
             'provider_id.required' => 'Este campo es requerido',
             'provider_id.integer' => 'El valor tiene que ser entero',
             'provider_id.exists' => 'El proveedor no existe',
+
+            'code.string' => 'El valor no es correcto',
+            'code.max' => 'Solo se permiten 8 dígitos',
+            'code.min' => 'Se requieren 8 dígitos',
         ];
     }
 

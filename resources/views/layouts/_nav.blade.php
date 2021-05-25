@@ -3,11 +3,14 @@
         <li class="nav-item nav-profile">
         <div class="nav-link">
             <div class="profile-image">
-            <img src="{{asset('template/images/faces/face5.jpg')}}" alt="image"/>
+            <img src="{{asset('image/'.Auth::user()->profile_picture)}}" alt="image"/>
             </div>
             <div class="profile-name">
             <p class="name">
-                Bienvenido(a) {{ Auth::user()->name }}
+                Bienvenido(a) 
+            </p>
+            <p class="name">
+                {{ Auth::user()->name }}
             </p>
             <p class="designation">
                 {{ Auth::user()->email }}
@@ -118,7 +121,7 @@
         <li class="nav-item">
         <a class="nav-link" href="pages/documentation.html">
             <i class="far fa-file-alt menu-icon"></i>
-            <span class="menu-title">Documentation</span>
+            <span class="menu-title">Documentacion</span>
         </a>
         </li>
     </ul>

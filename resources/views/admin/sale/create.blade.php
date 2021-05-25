@@ -72,6 +72,49 @@ function mostrarValores() {
     $("#stock").val(datosProducto[1]);
 }
 
+var product_id = $('#product_id');
+
+product_id.change(function() {
+    $.ajax({
+        url: "{{route('get_products_by_id')}}",
+        type: 'GET',
+        data: {
+            product_id: product_id.val(),
+        },
+        success: function(data) {
+            $("#price").val(data.sell_price);
+            $("#stock").val(data.stock);
+            $("#code").val(data.code);
+        }
+    });
+});
+
+$(obtener_registro());
+
+function obtener_registro(code) {
+    $.ajax({
+        url: "{{route('get_products_by_barcode')}}",
+        type: 'GET',
+        data: {
+            code: code
+        },
+        dataType: 'json',
+        success:function(data) {
+            $("#price").val(data.sell_price);
+            $("#stock").val(data.stock);
+            $("#product_id").val(data.id);
+        }
+    });
+}
+$(document).on('keyup', '#code', function() {
+    var valorResultado = $(this).val();
+    if (valorResultado != "") {
+        obtener_registro(valorResultado);
+    } else {
+        obtener_registro();
+    }
+})
+
 function agregar() {
     datosProducto = document.getElementById('product_id').value.split('_');
 

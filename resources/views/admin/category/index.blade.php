@@ -26,16 +26,8 @@
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Categorías</h4>
                         {{--  <i class="fas fa-ellipsis-v"></i>  --}}
-                        <div class="btn-group">
-                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="{{route('categories.create')}}" class="dropdown-item">Agregar</a>
-                                {{--  <button class="dropdown-item" type="button">Another action</button>
-                                <button class="dropdown-item" type="button">Something else here</button>
-                                --}}
-                            </div>
+                        <div class="btn-group mb-2">
+                            <a href="{{route('categories.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Agregar</a>
                         </div>
                     </div>
                     <div class="table-responsive">
