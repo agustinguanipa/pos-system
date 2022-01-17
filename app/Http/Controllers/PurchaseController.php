@@ -81,13 +81,14 @@ class PurchaseController extends Controller
 
     public function pdf(Purchase $purchase)
     {
+        $business = Business::first();
         $subtotal = 0;
         $PurchaseDetails = $purchase->PurchaseDetails;
         foreach ($PurchaseDetails as $PurchaseDetail) {
             $subtotal += $PurchaseDetail->quantity * $PurchaseDetail->price;
         }
 
-        $pdf = PDF::loadView('admin.purchase.pdf', compact('purchase', 'subtotal', 'PurchaseDetails'));
+        $pdf = PDF::loadView('admin.purchase.pdf', compact('purchase', 'subtotal', 'PurchaseDetails', 'business'));
         return $pdf->download('Reporte_de_Compra_'.$purchase->id.'.pdf');
     }
 
