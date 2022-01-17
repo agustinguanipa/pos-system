@@ -154,7 +154,7 @@
 		<tr>
 			<td class="logo_factura">
 				<div>
-					<img src="{{asset('image/'.$business->logo)}}" width="180px">
+					{{-- <img src="{{asset('image/'.$business->logo)}}" width="180px"> --}}
 				</div>
 			</td>
 			<td class="info_empresa" colspan="2">		
@@ -222,9 +222,9 @@
                 <tr>
                     <td>{{$SaleDetail->quantity}}</td>
                     <td>{{$SaleDetail->product->name}}</td>
-                    <td>$ {{$SaleDetail->price}}</td>
-                    <td>$ {{$SaleDetail->discount}}</td>
-                    <td>$ {{number_format($SaleDetail->quantity*$SaleDetail->price-$SaleDetail->quantity*$SaleDetail->price*$SaleDetail->discount/100,2)}}</td>
+                    <td>{{$SaleDetail->price}}</td>
+                    <td>{{$SaleDetail->discount}}</td>
+                    <td>{{number_format($SaleDetail->quantity*$SaleDetail->price-$SaleDetail->quantity*$SaleDetail->price*$SaleDetail->discount/100,2)}}</td>
                 </tr>
                 @endforeach
 			</tbody>

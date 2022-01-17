@@ -159,11 +159,11 @@
 			</td>
 			<td class="info_empresa" colspan="2">		
                 <div class="card">
-                    <span class="h2">{{$business->name}}</span>
+                    {{-- <span class="h2">{{$business->name}}</span>
                     <p>{{$business->description}}</p>
                     <p>{{$business->rif_number}}</p>
                     <p>{{$business->email}}</p>
-                    <p>{{$business->address}}</p>
+                    <p>{{$business->address}}</p> --}}
                 </div>
 			</td>
 			<td class="info_factura">
@@ -221,8 +221,8 @@
                 <tr>
                     <td>{{$PurchaseDetail->quantity}}</td>
                     <td>{{$PurchaseDetail->product->name}}</td>
-                    <td>$ {{$PurchaseDetail->price}}</td>
-                    <td>$ {{number_format($PurchaseDetail->quantity*$PurchaseDetail->price,2)}}</td>
+                    <td>{{$PurchaseDetail->price}}</td>
+                    <td>{{number_format($PurchaseDetail->quantity*$PurchaseDetail->price,2)}}</td>
                 </tr>
                 @endforeach
 			</tbody>
